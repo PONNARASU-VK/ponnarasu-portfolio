@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ponnarasu V – Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Ponnarasu V, a full-stack developer building web applications with Python, Django and React.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060f;--s1:#0b0e1d;--s2:#11152b;--ln:rgba(255,255,255,.09);--fg:#e8ebff;--mut:#9aa3c7;
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --grad:linear-gradient(110deg,#3b82f6,#8b5cf6 55%,#ec4899);
+  color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid #8b5cf6;outline-offset:3px}
+.bgfx{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 16s ease-in-out infinite alternate}
+.o1{width:38rem;height:38rem;background:#3b82f6;top:-12rem;left:-10rem}
+.o2{width:34rem;height:34rem;background:#8b5cf6;top:10rem;right:-12rem;animation-delay:-5s}
+.o3{width:26rem;height:26rem;background:#ec4899;opacity:.22;bottom:-8rem;left:30%;animation-delay:-9s}
+@keyframes float{to{transform:translate(60px,40px) scale(1.12)}}
+
+nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:.1rem;padding:.35rem;border:1px solid var(--ln);border-radius:100px;background:rgba(11,14,29,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);max-width:calc(100% - 1.2rem)}
+nav a{padding:.45rem .85rem;border-radius:100px;font-size:.88rem;font-weight:500;color:var(--mut);transition:background .25s,color .25s}
+nav a:hover{background:rgba(139,92,246,.2);color:#fff}
+nav a.cta{background:var(--grad);color:#fff}
+
+main{max-width:72rem;margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+section{padding:clamp(3.5rem,8vw,5.5rem) 0}
+h2{font:800 clamp(1.9rem,4.5vw,2.8rem)/1.1 var(--sans);margin:0 0 .6rem;letter-spacing:-.02em}
+.sub{color:var(--mut);max-width:46rem;margin:0 0 2rem}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center;padding-top:6.5rem}
+.pill{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem .9rem;border:1px solid var(--ln);border-radius:100px;background:rgba(255,255,255,.04);font-size:.85rem;color:var(--mut)}
+.dot{width:.55rem;height:.55rem;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font:800 clamp(2.6rem,7vw,4.9rem)/1.02 var(--sans);letter-spacing:-.035em;margin:1.2rem 0 .8rem}
+.type{font:500 clamp(1.1rem,2.4vw,1.45rem)/1.4 var(--mono);color:#7dd3fc;min-height:2em}
+.type::after{content:"";display:inline-block;width:.55ch;height:1.1em;margin-left:3px;vertical-align:-.15em;background:#8b5cf6;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lede{color:var(--mut);max-width:34rem;margin:1rem 0 1.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:14px;font-weight:700;border:1px solid var(--ln);background:rgba(255,255,255,.04);transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.08)}
+.btn.pri{background:var(--grad);border-color:transparent;box-shadow:0 10px 30px -8px rgba(139,92,246,.7)}
+.btn.pri:hover{box-shadow:0 16px 40px -8px rgba(139,92,246,.9)}
+
+/* code window */
+.win{border-radius:20px;border:1px solid var(--ln);background:rgba(11,14,29,.85);box-shadow:0 30px 80px -20px rgba(59,130,246,.45),0 0 0 1px rgba(139,92,246,.15);overflow:hidden;animation:bob 6s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-10px)}}
+.bar{display:flex;align-items:center;gap:.45rem;padding:.8rem 1rem;border-bottom:1px solid var(--ln);background:rgba(255,255,255,.03)}
+.bar i{width:.7rem;height:.7rem;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.tabs{margin-left:.8rem;display:flex;gap:.3rem}
+.tabs button{font:500 .78rem var(--mono);color:var(--mut);background:none;border:0;padding:.3rem .7rem;border-radius:8px;cursor:pointer}
+.tabs button.on{background:rgba(139,92,246,.25);color:#fff}
+pre{margin:0;padding:1.2rem 1.3rem;font:400 .82rem/1.75 var(--mono);overflow-x:auto;color:#cdd5ff;min-height:15.5rem}
+pre[hidden]{display:none}
+pre code span.l{display:block;opacity:0;animation:ln .5s ease forwards;animation-delay:calc(var(--n)*.12s + .6s)}
+@keyframes ln{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.k{color:#c084fc}.f{color:#60a5fa}.s{color:#34d399}.c{color:#6b7599;font-style:italic}.t{color:#f9a8d4}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:-1rem}
+.st{padding:1.4rem;border-radius:20px;border:1px solid var(--ln);background:linear-gradient(160deg,var(--s2),var(--s1))}
+.st b{display:block;font:800 clamp(2rem,4vw,2.8rem)/1 var(--sans);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.st span{color:var(--mut);font-size:.9rem}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:span 6}
+.bk{--a:139,92,246;position:relative;padding:1.6rem;border-radius:22px;border:1px solid var(--ln);background:linear-gradient(160deg,var(--s2),var(--s1));overflow:hidden;transition:transform .35s,border-color .35s}
+.bk::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(260px circle at 100% 0,rgba(var(--a),.32),transparent 70%)}
+.bk::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(var(--a),.2),transparent 70%)}
+.bk:hover{transform:translateY(-5px);border-color:rgba(var(--a),.55)}
+.bk:hover::after{opacity:1}
+.bk>*{position:relative;z-index:1}
+.bl{--a:59,130,246}.bv{--a:139,92,246}.bc{--a:34,211,238}.bp{--a:236,72,153}.bg{--a:52,211,153}.bo{--a:251,146,60}
+.bk h3{font:700 1.2rem/1.3 var(--sans);margin:0 0 .5rem}
+.bk p{color:var(--mut);margin:0;font-size:.95rem}
+.ico{display:grid;place-items:center;width:3rem;height:3rem;margin-bottom:1rem;border-radius:14px;font:700 1rem var(--mono);color:#fff;background:linear-gradient(135deg,rgba(var(--a),1),rgba(var(--a),.45));box-shadow:0 8px 24px -6px rgba(var(--a),.8)}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.chips span{padding:.3rem .75rem;border-radius:100px;font:500 .8rem var(--mono);border:1px solid rgba(var(--a),.4);background:rgba(var(--a),.12);color:#fff}
+.num{font:800 .9rem var(--mono);color:rgb(var(--a));margin-bottom:.6rem;display:block}
+
+/* projects */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 1.2rem;font:500 .78rem var(--mono)}
+.flow span{padding:.3rem .7rem;border-radius:8px;background:rgba(var(--a),.18);border:1px solid rgba(var(--a),.4)}
+.flow em{color:var(--mut);font-style:normal}
+.bk ul{margin:.8rem 0 0;padding-left:1.1rem;color:#c3cae8;font-size:.95rem}
+.bk li{margin-bottom:.5rem}
+.bk h3.big{font-size:1.6rem}
+.cert b{display:block;font-weight:700}
+.cert small{color:var(--mut)}
+
+/* contact */
+.cta-b{text-align:center;padding:clamp(2.2rem,6vw,4rem) 1.5rem;border-radius:28px;border:1px solid rgba(139,92,246,.4);background:radial-gradient(70% 120% at 50% 0,rgba(139,92,246,.35),transparent 70%),linear-gradient(160deg,var(--s2),var(--s1))}
+.cta-b h2{margin-bottom:1rem}
+.mail{display:inline-block;margin:.5rem 0 1.6rem;font:700 clamp(1.1rem,4.4vw,2rem) var(--sans);word-break:break-all;border-bottom:2px solid #8b5cf6;padding-bottom:.2rem}
+.cta-b .btns{justify-content:center}
+footer{text-align:center;color:var(--mut);padding:1rem 1rem 3rem;font-size:.9rem}
+
+/* reveal */
+.js .rv{opacity:0}
+.rv.in{opacity:1;animation:up .8s cubic-bezier(.2,.7,.2,1) var(--d,0s) backwards}
+@keyframes up{from{opacity:0;transform:translateY(26px)}}
+
+@media (max-width:900px){.hero{grid-template-columns:1fr;min-height:0;padding-bottom:2rem}.stats{grid-template-columns:repeat(2,1fr);margin-top:1rem}.s2{grid-column:span 3}.s4{grid-column:span 6}}
+@media (max-width:600px){.s2,.s3,.s4{grid-column:span 6}nav a{padding:.45rem .6rem;font-size:.8rem}}
+.stars{position:absolute;inset:0;opacity:.7;background-size:520px 520px;animation:tw 5s ease-in-out infinite alternate;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 28% 62%,#9db8ff,transparent),radial-gradient(1.5px 1.5px at 47% 30%,#fff,transparent),radial-gradient(1px 1px at 63% 78%,#c4b5fd,transparent),radial-gradient(1.5px 1.5px at 78% 22%,#fff,transparent),radial-gradient(1px 1px at 90% 58%,#9db8ff,transparent),radial-gradient(1px 1px at 36% 90%,#fff,transparent)}
+@keyframes tw{from{opacity:.2}to{opacity:.85}}
+.prog{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:0;background:var(--grad);z-index:60}
+.cglow{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 65%)}
+@media (hover:none){.cglow{display:none}}
+.marq{overflow:hidden;margin-bottom:.5rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq div{display:flex;width:max-content;gap:.8rem;padding:.4rem 0;animation:roll 28s linear infinite}
+.marq span{padding:.55rem 1.2rem;border-radius:100px;border:1px solid var(--ln);background:rgba(255,255,255,.04);font:500 .9rem var(--mono);white-space:nowrap}
+.marq span:nth-child(3n+1){color:#93c5fd}.marq span:nth-child(3n+2){color:#c4b5fd}.marq span:nth-child(3n){color:#f9a8d4}
+@keyframes roll{to{transform:translateX(calc(-50% - .4rem))}}
+.rv.in .chips span{animation:pop .5s cubic-bezier(.2,.9,.3,1.4) backwards;animation-delay:calc(.35s + var(--i,0)*.07s)}
+.chips span:nth-child(2){--i:1}.chips span:nth-child(3){--i:2}.chips span:nth-child(4){--i:3}.chips span:nth-child(5){--i:4}.chips span:nth-child(6){--i:5}
+@keyframes pop{from{opacity:0;transform:scale(.6)}}
+h2::after{content:"";display:block;height:3px;width:0;border-radius:3px;background:var(--grad);margin-top:.8rem;transition:width 1s cubic-bezier(.2,.7,.2,1) .35s}
+h2.in::after{width:4.5rem}.cta-b h2::after{margin-inline:auto}
+.btn{position:relative;overflow:hidden}
+.btn.pri::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 3.5s ease-in-out infinite}
+@keyframes sheen{40%,100%{transform:translateX(120%)}}
+.cform{display:grid;gap:1rem;max-width:40rem;margin:0 auto;text-align:left}
+.cform .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cform label{display:grid;gap:.4rem;font-size:.85rem;font-weight:500;color:var(--mut)}
+.cform input,.cform textarea{width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid var(--ln);background:rgba(5,6,15,.6);color:var(--fg);font:400 1rem var(--sans);transition:border-color .25s,box-shadow .25s}
+.cform input:focus,.cform textarea:focus{outline:0;border-color:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92,246,.25)}
+.cform textarea{resize:vertical;min-height:8rem}
+.cform .btn{justify-self:start;cursor:pointer;font:700 1rem var(--sans)}
+.cform .btn:disabled{opacity:.6}
+.note{margin:0;min-height:1.4em;color:#7dd3fc;font-size:.9rem}
+.note.err{color:#f9a8d4}
+.hp{display:none}
+html{-webkit-text-size-adjust:100%}
+@media (min-width:1500px){main{max-width:80rem}}
+@media (max-width:600px){.cform .row{grid-template-columns:1fr}.cform .btn{justify-self:stretch;justify-content:center}}
+@media (max-width:480px){nav{overflow-x:auto;scrollbar-width:none;justify-content:flex-start}nav::-webkit-scrollbar{display:none}.btns .btn{flex:1 1 100%;justify-content:center}.bk{padding:1.3rem}.win pre{font-size:.74rem;min-height:13rem}.hero{padding-top:5.5rem}}
+@media (prefers-reduced-motion:reduce){.cglow,.stars{display:none}*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1}pre code span.l{opacity:1}}
+</style>
+</head>
+<body>
+<div class="bgfx" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="stars"></div></div>
+<div class="prog" id="prog"></div><div class="cglow" id="cglow"></div>
+
+<nav aria-label="Main">
+  <a href="#home">Home</a><a href="#stack">Stack</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a class="cta" href="#contact">Contact</a>
+</nav>
+
+<main>
+  <section class="hero" id="home">
+    <div>
+      <span class="pill"><i class="dot"></i>Open to full-stack developer roles</span>
+      <h1>Hi, I’m <span class="g">Ponnarasu V</span></h1>
+      <div class="type" id="type" aria-live="off"></div>
+      <p class="lede">I design the database, build the Django API and ship the React interface on top of it. I’m a Master of Computer Applications student in Chennai who loves clean code and problem solving.</p>
+      <div class="btns">
+        <a class="btn pri" href="#projects">View projects</a>
+        <a class="btn" href="https://github.com/PONNARASU-VK" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ponnarasu-v" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="win" aria-label="Sample code">
+      <div class="bar"><i></i><i></i><i></i>
+        <div class="tabs"><button class="on" data-t="0">love.py</button><button data-t="1">love.js</button></div>
+      </div>
+      <pre id="p0"><code><span class="l" style="--n:0"><span class="k">while</span> <span class="k">True</span>:</span><span class="l" style="--n:1">    <span class="f">learn</span>()</span><span class="l" style="--n:2">    <span class="f">code</span>()</span><span class="l" style="--n:3">    <span class="f">build</span>()</span><span class="l" style="--n:4">    <span class="f">improve</span>()</span></code></pre>
+      <pre id="p1" hidden><code><span class="l" style="--n:0"><span class="k">const</span> developer = {</span><span class="l" style="--n:1">    passion: <span class="s">"Coding"</span>,</span><span class="l" style="--n:2">    mindset: <span class="s">"Never stop learning"</span>,</span><span class="l" style="--n:3">    goal: <span class="s">"Build something meaningful"</span></span><span class="l" style="--n:4">};</span><span class="l" style="--n:5"> </span><span class="l" style="--n:6">console.<span class="f">log</span>(<span class="s">"Code. Create. Innovate."</span>);</span></code></pre>
+    </div>
+  </section>
+
+
+  <div class="marq" aria-hidden="true"><div><span>Python</span><span>Django</span><span>React.js</span><span>JavaScript</span><span>TypeScript</span><span>Java</span><span>SQL</span><span>Git</span><span>HTML5</span><span>CSS3</span><span>Python</span><span>Django</span><span>React.js</span><span>JavaScript</span><span>TypeScript</span><span>Java</span><span>SQL</span><span>Git</span><span>HTML5</span><span>CSS3</span></div></div>
+
+  <section id="stack">
+    <h2>My <span class="g">tech stack</span></h2>
+    <p class="sub">One developer across the whole stack: data, API and interface.</p>
+    <div class="bento">
+      <div class="bk bl s2 rv"><div class="ico">&lt;/&gt;</div><h3>Frontend</h3><p>Responsive, component-based interfaces.</p><div class="chips"><span>HTML5</span><span>CSS3</span><span>React.js</span><span>JavaScript</span><span>TypeScript</span></div></div>
+      <div class="bk bv s2 rv"><div class="ico">{ }</div><h3>Backend</h3><p>Secure, well-structured REST APIs.</p><div class="chips"><span>Python</span><span>Django</span><span>REST API</span><span>Java</span></div></div>
+      <div class="bk bc s2 rv"><div class="ico">SQL</div><h3>Database</h3><p>Relational models and queries.</p><div class="chips"><span>SQL</span><span>DBMS</span><span>Schema design</span></div></div>
+      <div class="bk bp s3 rv"><div class="ico">λ</div><h3>Computer science core</h3><p>The fundamentals behind clean, fast code. I practice daily on <a href="https://leetcode.com/u/Ponnarasu_vk/" target="_blank" rel="noopener" style="border-bottom:1px solid #ec4899">LeetCode</a>.</p><div class="chips"><span>OOP</span><span>Data structures</span><span>Algorithms</span><span>Problem solving</span></div></div>
+      <div class="bk bg s3 rv"><div class="ico">git</div><h3>Tools and workflow</h3><p>Version control and the editors I build with.</p><div class="chips"><span>Git</span><span>GitHub</span><span>VS Code</span><span>PyCharm</span><span>Cursor</span><span>Eclipse</span></div></div>
+    </div>
+  </section>
+
+
+  <section id="projects">
+    <h2>Featured <span class="g">projects</span></h2>
+    <p class="sub">Two full-stack applications, each with a React frontend, a Django REST API and a SQL database.</p>
+    <div class="bento">
+      <article class="bk bv s3 rv">
+        <h3 class="big">Placement Portal</h3>
+        <div class="flow"><span>React.js</span><em>→</em><span>Django REST</span><em>→</em><span>SQL</span></div>
+        <ul>
+          <li>Students register, browse job openings and apply online.</li>
+          <li>Admins post jobs and review every applicant.</li>
+          <li>Token-based authentication and a relational schema for students, companies, jobs and applications.</li>
+        </ul>
+        <div class="chips"><span>Django</span><span>DRF</span><span>React.js</span><span>SQL</span></div>
+      </article>
+      <article class="bk bl s3 rv">
+        <h3 class="big">Expense Tracker</h3>
+        <div class="flow"><span>React.js</span><em>→</em><span>Django REST</span><em>→</em><span>SQL</span></div>
+        <ul>
+          <li>Record income and expenses and set monthly budgets.</li>
+          <li>See category-wise summaries with search and filters.</li>
+          <li>Secure login, full CRUD and a documented README on GitHub.</li>
+        </ul>
+        <div class="chips"><span>Python</span><span>Django</span><span>React.js</span><span>SQL</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2>Education and <span class="g">leadership</span></h2>
+    <p class="sub">Formal training and the roles I take on.</p>
+    <div class="bento">
+      <div class="bk bl s3 rv"><div class="ico">MCA</div><h3>Master of Computer Applications</h3><p>Vels University, Pallavaram, Chennai. CGPA 8.4.</p></div>
+      <div class="bk bp s3 rv"><div class="ico">★</div><h3>Placement Coordinator</h3><p>MCA Department, Vels University. Helping classmates connect with hiring companies.</p></div>
+      </div>
+  </section>
+
+  <section id="certifications">
+    <h2><span class="g">Certifications</span></h2>
+    <p class="sub">Courses and assessments that back up my skills.</p>
+    <div class="bento">
+      <div class="bk bo s2 cert rv"><b>Programming in Java</b><small>NPTEL</small></div>
+      <div class="bk bc s2 cert rv"><b>Design Thinking</b><small>NPTEL</small></div>
+      <div class="bk bl s2 cert rv"><b>JavaScript</b><small>HackerRank</small></div>
+      <div class="bk bv s2 cert rv"><b>React</b><small>HackerRank</small></div>
+      <div class="bk bp s2 cert rv"><b>Claude Code in Action</b><small>Anthropic</small></div>
+      <div class="bk bg s2 cert rv"><b>Employability Skills: Job Ready (With AI)</b><small>Wadhwani Foundation</small></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cta-b rv">
+      <h2>Let’s build something <span class="g">together</span></h2>
+      <p class="sub" style="margin:0 auto 1.6rem">I’m looking for a full-stack developer role where I can build, learn and ship every day. Send me a message and it lands straight in my inbox.</p>
+      <form class="cform" id="cform" name="contact" method="POST" action="#">
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="row">
+          <label>Your name<input name="name" type="text" required maxlength="80" autocomplete="name" placeholder="Your name"></label>
+          <label>Your email<input name="email" type="email" required maxlength="120" autocomplete="email" placeholder="you@company.com"></label>
+        </div>
+        <label>Subject<input name="subject" type="text" required maxlength="120" placeholder="What is this about?"></label>
+        <label>Message<textarea name="message" rows="5" required maxlength="2000" placeholder="Hi Ponnarasu, I’d like to talk about..."></textarea></label>
+        <button class="btn pri" type="submit">Send message</button>
+        <p class="note" id="fnote" role="status" aria-live="polite"></p>
+      </form>
+      <div class="btns" style="margin-top:1.4rem">
+        <a class="btn" href="mailto:ponnarasuvk1210@gmail.com">Or email directly</a>
+        <a class="btn" href="https://github.com/PONNARASU-VK" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ponnarasu-v" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://leetcode.com/u/Ponnarasu_vk/" target="_blank" rel="noopener">LeetCode</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Designed and built by Ponnarasu V. Chennai, India.</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  setTimeout(function(){if(window.__rv)return;document.querySelectorAll('.rv').forEach(function(x){x.classList.add('in');var n=x.querySelector('[data-n]');if(n)n.textContent=(+n.dataset.n).toFixed(+n.dataset.d)})},2500);
+  // typing roles
+  var roles=['Full-Stack Developer','Python and Django Engineer','React.js Interface Builder','Problem Solver'],ri=0,ci=0,del=false,el=document.getElementById('type');
+  (function tick(){
+    var w=roles[ri];
+    el.textContent=w.slice(0,ci);
+    if(!del&&ci===w.length){del=true;return setTimeout(tick,1500)}
+    if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+    ci+=del?-1:1;
+    setTimeout(tick,del?35:70);
+  })();
+  // code tabs
+  var btns=document.querySelectorAll('.tabs button');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.toggle('on',x===b)});
+    [0,1].forEach(function(i){
+      var p=document.getElementById('p'+i),show=String(i)===b.dataset.t;
+      p.hidden=!show;
+      if(show){var c=p.firstChild;c.innerHTML=c.innerHTML}
+    });
+  })});
+  // reveal + count-up
+  function count(n){
+    var to=parseFloat(n.dataset.n),d=+n.dataset.d,t0=null;
+    (function step(t){if(!t0)t0=t;var k=Math.min((t-t0)/1400,1),e=1-Math.pow(1-k,3);
+      n.textContent=(to*e).toFixed(d);if(k<1)requestAnimationFrame(step)})(performance.now());
+  }
+  var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    window.__rv=1;if(!e.isIntersecting)return;
+    var x=e.target;x.classList.add('in');io.unobserve(x);
+    var n=x.querySelector('[data-n]');
+    if(n){still?n.textContent=(+n.dataset.n).toFixed(+n.dataset.d):count(n)}
+  })},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(x,i){
+    x.style.setProperty('--d',(i%3)*.1+'s');io.observe(x);
+  });
+  var pg=document.getElementById('prog');
+  function pr(){var d=document.documentElement,m=d.scrollHeight-innerHeight;pg.style.width=(m>0?scrollY/m*100:0)+'%'}
+  addEventListener('scroll',pr,{passive:true});pr();
+  var cg=document.getElementById('cglow');
+  addEventListener('mousemove',function(e){cg.style.opacity=1;cg.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
+  document.querySelectorAll('section h2').forEach(function(h){h.classList.add('rv');io.observe(h)});
+  if(matchMedia('(hover:hover)').matches&&!still){document.querySelectorAll('.bk').forEach(function(b){
+    b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      b.style.transform='perspective(800px) rotateX('+(-y*6)+'deg) rotateY('+(x*8)+'deg) translateY(-5px)'});
+    b.addEventListener('mouseleave',function(){b.style.transform=''})})}
+  var f=document.getElementById('cform'),note=document.getElementById('fnote');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=f.querySelector('button');
+    function v(n){return (f.elements[n].value||'').trim()}
+    function show(m,bad){note.textContent=m;note.className='note'+(bad?' err':'')}
+    var d={name:v('name'),email:v('email'),subject:v('subject'),message:v('message'),'bot-field':f.elements['bot-field'].value,t:Math.round(performance.now())};
+    if(!d.name||!d.email||!d.subject||!d.message)return show('Please fill in all fields.',true);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email))return show('Please enter a valid email address.',true);
+    btn.disabled=true;show('Sending...');
+    fetch('/.netlify/functions/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok&&j.ok,m:j.message}})})
+    .then(function(x){if(x.ok){f.reset();show('Thank you! Your message was sent. I will reply soon.')}else show(x.m||'Sorry, your message could not be sent. Please try again later.',true)})
+    .catch(function(){show('Sorry, your message could not be sent. Please try again later.',true)})
+    .then(function(){btn.disabled=false})});
+  // pointer glow on blocks
+  document.querySelectorAll('.bk').forEach(function(b){
+    b.addEventListener('mousemove',function(e){
+      var r=b.getBoundingClientRect();
+      b.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      b.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+})();
+</script>
+</body>
+</html>
